@@ -42,3 +42,22 @@ Establish Project to Your Local Env
         daphne mysite.asgi:application
 
 8. Go to your local host: [http://localhost:8000](http://localhost:8000/)
+
+Dockerize App
+-----
+
+Dockerfile is ready for usage. Please follow steps below:
+
+1. Route Project Directory & Create Docker image
+
+       docker build -t my-django-app .
+   
+2. Push to Registry
+
+       docker push my-django-app
+   
+3. Run container
+   
+       docker run -p 8000:8000 my-django-app
+   
+4. Go to your local host: [http://localhost:8000](http://localhost:8000/)
