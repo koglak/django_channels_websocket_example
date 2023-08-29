@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Automation Status</title>
+</head>
+<body>
+    <h2>Get Messages From Backend One By One</h2>
+    <button id="start-button">Start Automation</button>
+    <br>
+    <br>
+    <textarea id="automation-log" cols="100" rows="20"></textarea><br>
+    <script>
+        document.getElementById('start-button').addEventListener('click', function() {
+            var automationSocket = new WebSocket(
+                'ws://' + window.location.host +
+                '/ws/automation/'
+            );
+
+            automationSocket.onmessage = function(e) {
+                const data = JSON.parse(e.data);
+                console.log(data.message);
+                document.querySelector('#automation-log').value += (data.message + '\n');
+            };
+
+            automationSocket.onclose = function(e) {
+                console.error('Automation socket closed unexpectedly');
+            };
+        });
+    </script>
+</body>
+</html>
