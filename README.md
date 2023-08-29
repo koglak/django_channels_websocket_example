@@ -16,13 +16,17 @@ Here is the tutorial that I implemented: [Channels Tutorial](https://channels.re
 3. Download requirements
 
          pip install -r requirements.txt
+   
+5. Migrate migrations
 
-4. Run redis
+         python manage.py migrate
+
+6. Run redis
 
         docker run -p 6379:6379 -d redis:5
    
-6. Run app
+7. Run app
 
         daphne mysite.asgi:application
 
-7. Go to your local host: [http://localhost:8000](http://localhost:8000/)
+8. Go to your local host: [http://localhost:8000](http://localhost:8000/)
